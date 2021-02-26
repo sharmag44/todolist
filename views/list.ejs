@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <title>To Do List</title>
 </head>
 <body>
-      <h1> <%= TypeofDay %> </h1>
-       <ul>
-        <li>Eat</li>
-        <li>Sleep</li>
-        <li>Read</li>
-        <% for (var i=0; i<Additem.length; i++)
-        { %>
-          <li><%= Additem[i] %></li>
-        <% } %>
-          
-        
-       </ul>
-      <form  class="" action="/" method="post">
-        <input type="text"  name="item" >
-        <button type="submit"name="button">Add Task</button>
-      </form>
+      <div class="box" id="heading">
+      <h1> <%= TypeofDay %> </h1> 
+    </div>
+    <div class="box"> 
+          <% for (var i=0; i<Additem.length; i++)
+          { %>
+            <div class="item">
+                <input type="checkbox" name="value">
+                <p> <%= Additem[i] %> </p>
+            </div>
+            <% } %>
+            <form  class="item" action="/" method="post">
+              <input type="text"  name="item" placeholder="Create New Todo" autofocus="on" autocomplete="off">
+              <button type="submit"name="button">+</button>
+            </form>
+    </div>
+      
+      
 </body>
 </html>
