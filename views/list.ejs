@@ -1,18 +1,32 @@
-        <%- include('header')%>
-      <div class="box" id="heading">
-    <h1> <%= todoList %> </h1>   <!-- change the type of day name  -->
+<%- include('header')%>
+<div class="box" id="heading">
+  <h1><%= todoList %></h1>
+  <!-- change the type of day name  -->
+</div>
+<div class="box">
+  <% Additem.forEach(function(item){ %>
+  <form action="/delete" method="post">
+    <div class="item">
+      <input
+        type="checkbox"
+        name="value"
+        value="<%= item._id %>"
+        onChange="this.form.submit()"
+      />
+      <p><%=item.name %></p>
     </div>
-    <div class="box"> 
-          <% Additem.forEach(function(item){ %>
-            <div class="item">
-                <input type="checkbox" name="value">
-                <p> <%=item.name %> </p>
-            </div>
-            <% } )%>
-            <form  class="item" action="/" method="post">
-              <input type="text"  name="item" placeholder="Create New Todo" autofocus="on" autocomplete="off">
-              <button type="submit"name="list" value="<%= todoList %>"">+</button>
-            </form>
-    </div>
-    <%- include("footer")%>
-      
+    <input type="hidden" name="listName" value="<%= todoList %>" />
+  </form>
+  <% } )%>
+  <form class="item" action="/" method="post">
+    <input
+      type="text"
+      name="item"
+      placeholder="Create New Todo"
+      autofocus="on"
+      autocomplete="off"
+    />
+    <button type="submit" name="listName" value="<%= todoList %>">+</button>
+  </form>
+</div>
+<%- include("footer")%>
